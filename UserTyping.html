@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typing Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f5;
+      padding: 40px;
+      color: #333;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    .test-box {
+      background-color: white;
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #prompt {
+      font-size: 18px;
+      margin-bottom: 20px;
+      border-left: 4px solid #2c3e50;
+      padding-left: 10px;
+      text-align: left;
+    }
+
+    #typingInput {
+      width: 100%;
+      height: 120px;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    .info {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a242f;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Typing Test</h1>
+
+  <div class="test-box">
+    <div id="prompt">
+      The quick brown fox jumps over the lazy dog. This sentence contains every letter of the alphabet at least once.
+    </div>
+
+    <textarea id="typingInput" placeholder="Start typing here..." oninput="startTimer()"></textarea>
+
+    <div class="info">
+      <p><strong>Time:</strong> <span id="time">0</span> seconds</p>
+      <p><strong>Words Per Minute (WPM):</strong> <span id="wpm">0</span></p>
+      <button onclick="calculateWPM()">Finish</button>
+    </div>
+  </div>
+
+  <script>
+    let startTime;
+    let isTiming = false;
+
+    function startTimer() {
+      if (!isTiming) {
+        isTiming = true;
+        startTime = new Date();
+
+        setInterval(() => {
+          if (isTiming) {
+            const currentTime = new Date();
+            const timePassed = Math.floor((currentTime - startTime) / 1000);
+            document.getElementById("time").innerText = timePassed;
+          }
+        }, 1000);
+      }
+    }
+
+    function calculateWPM() {
+      isTiming = false;
+      const endTime = new Date();
+      const timeTaken = (endTime - startTime) / 60000; // in minutes
+
+      const typedText = document.getElementById("typingInput").value.trim();
+      const wordCount = typedText.split(/\s+/).length;
+
+      const wpm = Math.round(wordCount / timeTaken);
+      document.getElementById("wpm").innerText = isNaN(wpm) ? 0 : wpm;
+    }
+  </script>
+
+</body>
+</html>
