@@ -1,0 +1,30 @@
+/* Reset default list styles and padding */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    /* space between items */
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #e91e63;
+    /* pink underline */
+    padding: 10px 20px;
+}
+
+nav ul li {
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li:hover {
+    background-color: #e91e63;
+    color: white;
+}
