@@ -1,0 +1,15 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    padding-top: 100px;
+}
+
+a {
+    color: #e91e63;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
